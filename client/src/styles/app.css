@@ -29,7 +29,7 @@ body {
   height: 64px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 20px;
   background: rgba(12, 13, 18, 0.9);
   backdrop-filter: blur(10px);
@@ -39,31 +39,16 @@ body {
 
 .nav-brand {
   display: flex;
-  align-items: center;
+  justify-content: center; /* 水平居中图片 */
+  align-items: center; /* 垂直居中图片 */
   gap: 10px;
 }
 
-.logo-mark {
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #74c0fc, #8ce99a);
-  color: #0b0c12;
-  font-weight: 800;
-  font-size: 14px;
-}
-
-.logo-text {
-  display: grid;
-  line-height: 1.2;
-}
-
 .logo-title {
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  height: 64px; /* 或 width，看你 logo 规格 */
+  background-color: #2fa4d3;
+  object-fit: contain;
+  border-radius: 90%;
 }
 
 .logo-sub {
@@ -92,6 +77,71 @@ body {
 
 .nav-dropdown {
   position: relative;
+}
+
+.floating-menu {
+  position: fixed;
+  z-index: 1200;
+  user-select: none;
+}
+
+/* 容器 */
+.nav-dropdown {
+  width: 220px;
+  border: 2px solid #7c3aed;
+  background: #f4ddf2;
+  font-family: monospace;
+}
+
+/* header */
+.dropdown-header {
+  height: 48px;
+  background: #7c3aed;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  cursor: grab;
+}
+
+.dropdown-header:active {
+  cursor: grabbing;
+}
+
+.dropdown-trigger {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* body（动画关键） */
+.dropdown-body {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  color: #000;
+}
+
+/* 展开状态 */
+.nav-dropdown.open .dropdown-body {
+  max-height: 600px; /* 足够大即可 */
+  opacity: 1;
+}
+
+/* item */
+.dropdown-item {
+  display: block;
+  padding: 8px 12px;
+  color: #000;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .dropdown-trigger {

@@ -13,36 +13,10 @@ function NavBar() {
   return (
     <header className="navbar">
       <div className="nav-brand">
-        <span className="logo-mark">✦</span>
-        <div className="logo-text">
-          <span className="logo-title">My Blog</span>
-          <span className="logo-sub">日々のメモとアイデア</span>
-        </div>
-      </div>
-
-      <nav className="nav-links">
-        <a href="#new">投稿する</a>
-        <a href="#posts">読む</a>
-      </nav>
-
-      <div className="nav-dropdown">
-        <button className="dropdown-trigger" onClick={() => setOpen(!open)}>
-          メニュー ▾
-        </button>
-        {open && (
-          <div className="dropdown-menu">
-            {menuItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="dropdown-item"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        )}
+        <img
+          className="logo-title"
+          src="https://hell-blau.com/cdn/shop/files/hell-blau_logo.png?v=1756697126"
+        ></img>
       </div>
     </header>
   );
