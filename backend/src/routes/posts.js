@@ -3,7 +3,7 @@ const { pool } = require("../db");
 
 const router = express.Router();
 
-// 获取文章列表
+// 投稿一覧を取得
 router.get("/", async (_req, res) => {
   try {
     const [rows] = await pool.query(
@@ -16,7 +16,7 @@ router.get("/", async (_req, res) => {
   }
 });
 
-// 获取单篇文章
+// ID で単一投稿を取得
 router.get("/:id", async (req, res) => {
   try {
     const [rows] = await pool.query(
@@ -33,7 +33,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// 新建文章
+// 新規投稿の作成
 router.post("/", async (req, res) => {
   const { title, content, author = "anonymous" } = req.body || {};
   if (!title || !content) {
@@ -56,7 +56,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// 更新文章（部分字段）
+// 投稿の部分更新
 router.put("/:id", async (req, res) => {
   const { title, content, author } = req.body || {};
   if (!title && !content && !author) {
@@ -94,7 +94,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// 删除文章
+// 投稿の削除
 router.delete("/:id", async (req, res) => {
   try {
     const [result] = await pool.query("DELETE FROM posts WHERE id = ?", [
@@ -103,7 +103,7 @@ router.delete("/:id", async (req, res) => {
     if (!result.affectedRows) {
       return res.status(404).json({ message: "Post not found" });
     }
-    res.status(404).send();
+    res.status(204).send();
   } catch (error) {
     console.error("[DELETE /posts/:id] failed:", error);
     res.status(500).json({ message: "Failed to delete post" });

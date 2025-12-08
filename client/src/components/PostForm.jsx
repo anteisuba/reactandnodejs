@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// 投稿フォーム：入力値を管理し、親コンポーネントに送信する
 function PostForm({ onSubmit, loading }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -7,6 +8,7 @@ function PostForm({ onSubmit, loading }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // 入力値を渡し、成功時はフォームをリセット
     const ok = await onSubmit({ title, content, author: author || undefined });
     if (ok) {
       setTitle("");
@@ -18,10 +20,10 @@ function PostForm({ onSubmit, loading }) {
   return (
     <form className="stack" onSubmit={handleSubmit}>
       <label className="field">
-        <span>标题</span>
+        <span>タイトル</span>
         <input
           type="text"
-          placeholder="如：React Hooks 笔记"
+          placeholder="例：React Hooks メモ"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
@@ -29,10 +31,10 @@ function PostForm({ onSubmit, loading }) {
       </label>
 
       <label className="field">
-        <span>内容</span>
+        <span>本文</span>
         <textarea
           rows="6"
-          placeholder="写下你的想法..."
+          placeholder="アイデアを書き留めてください..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
@@ -41,16 +43,16 @@ function PostForm({ onSubmit, loading }) {
 
       <label className="field inline">
         <div className="stack">
-          <span>作者（可选）</span>
+          <span>作者（任意）</span>
           <input
             type="text"
-            placeholder="默认 anonymous"
+            placeholder="未入力なら anonymous"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
           />
         </div>
         <button className="primary" type="submit" disabled={loading}>
-          {loading ? "发布中..." : "发布文章"}
+          {loading ? "投稿中..." : "投稿する"}
         </button>
       </label>
     </form>

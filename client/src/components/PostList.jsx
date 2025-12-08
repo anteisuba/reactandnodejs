@@ -1,3 +1,4 @@
+// 投稿カードをリスト表示する
 function PostList({ posts }) {
   return (
     <div className="post-list">
@@ -7,7 +8,7 @@ function PostList({ posts }) {
             <span>{post.author || "anonymous"}</span>
             <span>·</span>
             <span>
-              {new Date(post.created_at).toLocaleString("zh-CN", {
+              {new Date(post.created_at).toLocaleString("ja-JP", {
                 hour12: false,
               })}
             </span>

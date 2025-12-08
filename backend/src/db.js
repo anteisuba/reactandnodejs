@@ -8,6 +8,7 @@ const {
   DB_PORT = 3306,
 } = process.env;
 
+// MySQL コネクションプールを初期化
 const pool = mysql.createPool({
   host: DB_HOST,
   user: DB_USER,
@@ -20,7 +21,7 @@ const pool = mysql.createPool({
 });
 
 async function initDb() {
-  // Ensure the posts table exists; keeps the demo usable without manual SQL.
+  // posts テーブルが無ければ作成し、すぐに利用できるようにする
   await pool.query(`
     CREATE TABLE IF NOT EXISTS posts (
       id INT AUTO_INCREMENT PRIMARY KEY,

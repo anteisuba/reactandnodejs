@@ -1,53 +1,54 @@
-# React + Node.js 个人博客项目
+# React + Node.js 個人ブログ
 
-基于 React (Vite) 前端、Express + MySQL 后端的简易博客。后端负责文章 CRUD，前端提供写作与浏览界面，默认使用本地 MySQL。
+React (Vite) フロントエンドと Express + MySQL バックエンドで構成したシンプルなブログ。バックエンドは投稿の CRUD を提供し、フロントで記事の作成と閲覧を行います。
 
-## 目录结构
+## ディレクトリ構成
 
-- `backend/`：Express API，连接 MySQL（`posts` 表启动时自动创建）
-- `client/`：React 前端（Vite）
+- `backend/`：Express API。`posts` テーブルは起動時に自動作成
+- `client/`：React (Vite) フロントエンド
 
-## 环境要求
+## 前提
 
 - Node.js 18+
-- 本地 MySQL（默认 `blog_db` 数据库，`utf8mb4`）
+- ローカル MySQL（デフォルト DB は `blog_db` / `utf8mb4`。必要に応じ `.env` で変更）
 
-## 后端运行
+## バックエンドの起動
 
 ```bash
 cd backend
-cp .env.example .env  # 根据本地 MySQL 修改
-# 如需新建数据库：mysql -u root -p -e "CREATE DATABASE blog_db CHARACTER SET utf8mb4;"
+cp .env.example .env  # MySQL 接続情報に合わせて編集
+# DB を新規作成する場合：
+# mysql -u root -p -e "CREATE DATABASE blog_db CHARACTER SET utf8mb4;"
 npm install
-npm run dev   # 开发模式，4000 端口
-# npm start   # 生产运行
+npm run dev   # 開発モード（ポート 4000）
+# npm start   # 本番起動用
 ```
 
-主要 API：
+主な API:
 
-- `GET /api/health` 健康检查
-- `GET /api/posts` 获取文章列表
-- `GET /api/posts/:id` 获取单篇
-- `POST /api/posts` 新建文章（`title`, `content`, `author?`）
-- `PUT /api/posts/:id` 更新文章
-- `DELETE /api/posts/:id` 删除文章
+- `GET /api/health` ヘルスチェック
+- `GET /api/posts` 投稿一覧
+- `GET /api/posts/:id` 投稿詳細
+- `POST /api/posts` 投稿作成（`title`, `content`, `author?`）
+- `PUT /api/posts/:id` 投稿更新
+- `DELETE /api/posts/:id` 投稿削除
 
-## 前端运行
+## フロントエンドの起動
 
 ```bash
 cd client
-cp .env.example .env  # 如后端端口或域名不同可修改 VITE_API_BASE
+cp .env.example .env  # API ベース URL を変える場合に編集
 npm install
-npm run dev  # 默认 5173 端口
+npm run dev  # デフォルト 5173 ポート
 ```
 
-访问 `http://localhost:5173`。
+ブラウザで `http://localhost:5173` にアクセス。
 
-## 备注
+## 備考
 
-- 当前未安装依赖（网络受限时需自行执行 `npm install`）。安装完成后即可按上面步骤启动。
-- `backend/src/db.js` 在启动时自动确保 `posts` 表存在，但不会创建数据库本身。
+- 現在 `node_modules` は含めていません。ネットワークに接続して `npm install` を実行してください。
+- `backend/src/db.js` は起動時に `posts` テーブルを自動生成します（データベース自体は事前に作成が必要）。
 
-## 页面预览
+## 画面プレビュー
 
-![博客首页截图](client/assets/blog-home.jpeg)
+![ブログホームのスクリーンショット](client/assets/blog-home.jpeg)
