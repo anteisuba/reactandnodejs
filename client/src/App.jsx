@@ -65,10 +65,6 @@ function App() {
       <FloatingMenu />
       <header className="hero">
         <p className="eyebrow">Personal Blog</p>
-        <h1 id="top">アイデアとメモを記録する</h1>
-        <p className="lede">
-          シンプルな執筆フローで、ひらめきや学習メモを記事にまとめます。
-        </p>
         <div className="hero-actions">
           <button className="primary" onClick={loadPosts} disabled={loading}>
             {loading ? "更新中..." : "記事を更新"}

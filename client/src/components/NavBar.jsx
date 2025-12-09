@@ -2,14 +2,6 @@ import { useState } from "react";
 
 // 固定ナビゲーションバー（ドロップダウン付き）
 function NavBar() {
-  const [open, setOpen] = useState(false);
-
-  const menuItems = [
-    { label: "ホーム", href: "#top" },
-    { label: "新規投稿", href: "#new" },
-    { label: "投稿一覧", href: "#posts" },
-  ];
-
   return (
     <header className="navbar">
       <div className="nav-brand">

@@ -2,18 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import NavDropdown from "./NavDropdown";
 
 const menuItems = [
-  { href: "#top", label: "TOP 🥾" },
-  { href: "#news", label: "NEWS 💣" },
-  { href: "#live", label: "LIVE 🌕" },
-  { href: "#release", label: "RELEASE 💿" },
+  { href: "#login", label: "LOGIN 🥾" },
+  { href: "#collection", label: "Collection 💣" },
+  { href: "#like", label: "Like 🌕" },
+  { href: "#message", label: "Message 💿" },
 ];
 
 export default function FloatingMenu() {
   const ref = useRef(null);
 
   const [pos, setPos] = useState({
-    x: 16,
-    y: 76,
+    x: 5,
+    y: 5,
   });
 
   const draggingRef = useRef(false);

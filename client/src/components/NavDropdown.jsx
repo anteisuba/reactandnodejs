@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChevronDown, X } from "lucide-react";
 
 export default function NavDropdown({ menuItems, onHeaderMouseDown }) {
   const [open, setOpen] = useState(false);
@@ -16,7 +17,11 @@ export default function NavDropdown({ menuItems, onHeaderMouseDown }) {
             setOpen(!open);
           }}
         >
-          {open ? "✕" : "▾"}
+          {open ? (
+            <X width={20} height={10} />
+          ) : (
+            <ChevronDown width={20} height={10} />
+          )}
         </button>
       </div>
 
